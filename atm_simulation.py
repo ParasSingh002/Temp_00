@@ -36,16 +36,27 @@ if user == uname:
                 print("\n")
                 choice = int(input("Please enter your choice : "))
                 if choice == 1:
-                    withdraw = int(
-                        input("Please enter the amount u want to withdraw : ")
-                    )
-                    if withdraw <= balance:
-                        balance = balance - withdraw
-                    else:
-                        print("Insufficient balance !!")
+                    try:
+                        withdraw = int(
+                            input("Please enter the amount u want to withdraw : ")
+                        )
+                        if withdraw <= balance:
+                            balance = balance - withdraw
+                            print("withdraw successful!!")
+                        else:
+                            print("Insufficient balance !!")
+                    except ValueError:
+                        print("Invalid input!! Please enter a valid amount.")
                 elif choice == 2:
-                    deposit = int(input("Please enter the amount u want to deposit : "))
-                    balance = balance + deposit
+                    try:
+                        deposit = int(input("Please enter the amount u want to deposit : "))
+                        if deposit > 0:
+                            balance = balance + deposit
+                            print("Deposit successful!!")
+                        else:
+                            print("Invalid input!! Please enter a valid amount.")
+                    except ValueError:
+                        print("Invalid input!! Please enter a valid amount.")
                 elif choice == 3:
                     print(f"Your current balance : {balance}")
                 elif choice == 4:
