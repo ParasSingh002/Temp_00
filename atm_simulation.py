@@ -1,56 +1,61 @@
-user="Name@123"
-uname=input("enter ur username : ")
-a=0
-b=0
-c=0
-d=0
-count=0
-if user==uname:
-  pwd=input("enter ur password : ")
-  if len(pwd)>=8:
-    for i in pwd:
-      if i==" ":
-        count+=1
-    for i in pwd:
-      if count==0:
-        if i.isupper()==True:
-          a+=1
-        elif i.islower()==True:
-            b+=1
-        elif i.isdigit()==True:
-          c+=1
+user = "Name@123"
+uname = input("enter ur username : ")
+upper: int = 0
+lower: int = 0
+digits: int = 0
+special: int = 0
+count: int = 0
+if user == uname:
+    pwd = input("enter ur password : ")
+    if len(pwd) >= 8:
+        for i in pwd:
+            if i == " ":
+                count += 1
+        if count == 0:
+            for i in pwd:
+                if i.isupper() == True:
+                    upper += 1
+                elif i.islower() == True:
+                    lower += 1
+                elif i.isdigit() == True:
+                    digits += 1
+                else:
+                    special += 1
+        if upper > 0 and lower > 0 and digits > 0 and special > 0:
+            print("\n")
+            print("login successful!!")
+            balance = 10000
+            while True:
+                print("\n")
+                print("*" * 10)
+                print("1. withdraw")
+                print("2. deposit")
+                print("3. balance")
+                print("4. exit")
+                print("*" * 10)
+                print("\n")
+                choice = int(input("Please enter your choice : "))
+                if choice == 1:
+                    withdraw = int(
+                        input("Please enter the amount u want to withdraw : ")
+                    )
+                    if withdraw <= balance:
+                        balance = balance - withdraw
+                    else:
+                        print("Insufficient balance !!")
+                elif choice == 2:
+                    deposit = int(input("Please enter the amount u want to deposit : "))
+                    balance = balance + deposit
+                elif choice == 3:
+                    print(f"Your current balance : {balance}")
+                elif choice == 4:
+                    print("Thank you for using our services!!")
+                    break
+                else:
+                    print("invalid choice!!")
         else:
-          d+=1
-    if a>0 and b>0 and c>0 and d>0:
-      print("plogin successfu!!l")
-      balance=10000
-      while True:
-        print("*"*10)
-        print("1. withdraw")
-        print("2. deposit")
-        print("3. balance")
-        print("4. exit")
-        print("*"*10)
-        n=int(input("enter your choice : "))
-        if n==1:
-          withdraw=int(input("enter amount u want to withdraw : "))
-          if withdraw<=balance:
-            balance=balance-withdraw
-          else:
-            print("insufficient balance")
-        if n==2:
-          deposit=int(input("enter amount u want to deposit : "))
-          balance=balance+deposit
-        if n==3:
-          print(f"your current balance : {balance}")
-        if n==4:
-          print("u exited")
-          break
-        else:
-          print("invalid choice!!")
+            print("Signup failed!!")
     else:
-      print("signup failed!!")
-  else:
-    print("short password!!")
+        print("Short password!!")
 else:
-  print("invalid username!!")
+    print("Invalid username!!")
